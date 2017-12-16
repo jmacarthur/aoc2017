@@ -28,7 +28,6 @@ def process_reversions(lengths):
             pos += skip
             skip += 1
             pos = pos % len(ring)
-    print ring
     hashval = xor_16_byte(ring)
     return hashval
 

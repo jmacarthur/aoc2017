@@ -30,8 +30,13 @@ def process_reversions(lengths):
             pos = pos % len(ring)
     print ring
     hashval = xor_16_byte(ring)
-    hashascii = "".join(["%2.2x"%x for x in hashval])
-    print hashascii
+    return hashval
+
+def knot_hash(inp):
+    reversions = map(ord, inp)
+    reversions.extend([17, 31, 73, 47, 23])
+    hashval = process_reversions(reversions)
+    return hashval
 
 def main():
     filename = sys.argv[1]
@@ -39,9 +44,9 @@ def main():
         lengths = f.readlines()
     for l in lengths:
        print("Processing line '%s'"%l.strip())
-       reversions = map(ord, l.strip())
-       reversions.extend([17, 31, 73, 47, 23])
-       process_reversions(reversions)
+       hashval = knot_hash(l.strip())
+       hashascii = "".join(["%2.2x"%x for x in hashval])
+       print hashascii
        print("----------------------------------------")
 
 if __name__=="__main__":

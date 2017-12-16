@@ -47,6 +47,5 @@ while n<iterations:
     history.append(copy.copy(stage))
     n += 1
 
-pos = pos % stage_length
 spin(pos % stage_length)
 print "".join(stage)

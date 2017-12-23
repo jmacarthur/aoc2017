@@ -1,5 +1,5 @@
 The python solution to part 1 (solve23a.py) is a direct copy of day 18's interpreter with the extra instructions added, and a multiply counter. There isn't anything else needed to get the solution.
 
-Part 2 is more complicated. `transpiler.pl` will take the input text and translate it into C insturctions; this needs to be compiled in a wrapper (`wrapper.c`) which sets up the register variables. The provided makefile will do all these steps.
+Part 2 is more complicated. `transpiler.pl` will take the input text and translate it into C instructions; this needs to be compiled in a wrapper (`wrapper.c`) which sets up the register variables. The provided makefile will do all these steps.
 
 I went to C at first in case my C compiler was capable of figuring out the inefficiencies in the program. Unfortuntely it wasn't, so I hand-optimised the transpiled C source - replacing jumps with while/for loops made it a lot clearer what was happening, so it was easy to spot a better replacement algorithm. I couldn't think of any good way of doing this automatically, so I've not included the finished solution here.
